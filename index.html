@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="ll">
+        <div class="logo">DynamoCore Fitness</div>
+        <div class="hamburger" id="hamburger">
+
+          <p></p>
+          <p></p>
+          <p></p>
+
+        </div>
+
+      </div>
+      <ul class="nav" id="navb">
+        <li>Home</li>
+        <li>Contact </li>
+        <li>Schedule</li>
+        <li>Goals</li>
+        <li>Services</li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <!-- Main Content  -->
+  <main>
+    <div class="container">
+
+      <!-- First Section  -->
+      
+      <section class="view">
+        <h2 class="h2">Make Your Body Fit in this Summer with us </h2>
+        <hr>
+
+        <div class="flexbox">
+
+          <h1 class="heading">Improve Your Fitness level for the Better</h1>
+
+          <div class="img">
+            <img src="img/poster.jpg" alt="build body " class="pos">
+            <button class="btn">Free Pass</button>
+          </div>
+
+
+        </div>
+        <div class="back">
+          <img src="img/1.jpg" alt="body">
+          <p>Let's Try Reach Your Body Goals Body Target</p>
+
+
+        </div>
+
+        <div class="customer">
+          <img src="img/s.png" alt="smile">
+          <button class="feedback">950K+</button>
+          <button class="happy"> Happy Customer</button>
+        </div>
+
+
+
+      </section>
+
+      <!-- Logos Section  -->
+
+      <div class="logos">
+        <img src="img/A.png" alt="adidas" class="logo inverse"><img src="img/p.png" alt="puma" class="logo"><img src="img/N.png"
+          alt="Nike" class="logo inverse"><img src="img/u.jpg" alt="underskorce" class="logo"><img src="img/r.png" alt="reebok"
+          class="logo inverse">
+      </div>
+
+      <!-- Services Section  -->
+
+      <section class="services">
+
+        <h4>Facilites At DynamoCore Fitness </h4>
+        <p>Our Facilites Help You to Get You the Maximum Exercise And Experience in the Gym </p>
+
+        <div class="cards">
+          <div class="card">
+
+            <img src="img/table.png" alt="">
+
+            <b>Class </b>
+            <p>Our Facilites Help You to Get the Maximum Exercise and Experience in the Gym #x2190;</p>
+            <button class="orange">&rightarrow;;</button>
+          </div>
+          <div class="card">
+
+            <img src="img/cl.png" alt="">
+
+            <b>Club </b>
+            <p>Our Facilites Help You to Get the Maximum Exercise and Experience in the Gym </p>
+            <button class="orange">&rightarrow;;</button>
+
+          </div>
+          <div class="card">
+
+            <img src="img/cal.png" alt="">
+
+            <b>TimeTable </b>
+            <p>Our Facilites Help You to Get the Maximum Exercise and Experience in the Gym </p>
+            <button class="orange">&rightarrow;;</button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- Traniers Section  -->
+      <h2 class="text">Learn from Expert Trainers </h2>
+
+      <section class="trainers">
+        <div class="trainer">
+          <img src="img/pexels-teddy-tavan-2149771.jpg" alt="">
+          <h5>Men's Trainer </h5>
+          <p>Will Smit </p>
+        </div>
+        <div class="trainer">
+          <img src="img/pexels-sabel-blanco-1738629.jpg" alt="">
+          <h5>Women's Trainer </h5>
+          <p>Scarlett Johnassons </p>
+        </div>
+        <div class="trainer">
+          <img src="img/pexels-shotpot-4047039.jpg" alt="">
+          <h5>Personal Trainer </h5>
+          <p>William Sherlock </p>
+        </div>
+      </section>
+
+      <section class="form">
+        <h4>Contact Us </h4>
+        <p class="green" id="green">Thank You For Submitting the Form We will Contact You Soon </p>
+        <form  id= "loginForm">
+          <input type="text"  minlength="5" placeholder="Enter Your Name" id="name" required>
+          <input type="email" placeholder="Enter Your Email "id="email" required>
+          <input type="tel" minlength="10"  placeholder="Enter Your Phone Number "  id="number" required>
+          <textarea id="desc" name="desc"  cols="30" rows="10" placeholder=""
+            required>Enter Your Query Or asking about Plan's </textarea>
+          <button class="btn3">Submit</button>
+
+        </form>
+      </section>
+    </div>
+  </main>
+  <script>
+
+    //  Handle the Navigation Bar Hamburger 
+    document.getElementById('hamburger').addEventListener('click',()=>{
+      console.log('clicked ')
+      let doc = document.getElementById('navb')
+      const display = window.getComputedStyle(doc).display;
+      if(display === 'none'){
+        doc.style.display = 'revert'; 
+        document.getElementById('hamburger').style.flexDirection = 'row'; 
+      }
+      else{
+        doc.style.display = 'none'; 
+        document.getElementById('hamburger').style.flexDirection = 'column'; 
+
+
+      }
+      console.log(display)
+    })
+
+
+    let loginForm = document.getElementById("loginForm");
+
+    // Listening the Submit Form 
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      let name = document.getElementById("name").value
+      let email = document.getElementById("email").value
+      let no = document.getElementById("number").value
+      let other = document.getElementById("desc").value
+      console.log(name,email,no,other)
+      let url = "http://localhost:3000/"; 
+      let details ={
+        'name':name,
+        'email':email,
+        'desc':other,
+        'number':no
+      }
+      
+      // Encode the Data into x-www-form-urlencoded
+      var formBody = [];
+      for (var property in details) {
+        var encodedKey = encodeURIComponent(property);
+        var encodedValue = encodeURIComponent(details[property]);
+        formBody.push(encodedKey + "=" + encodedValue);
+      }
+      formBody = formBody.join("&");
+
+      // Fetch From the Api and Sumbit the Form  
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: formBody
+      })
+      .then((ress)=>{
+        console.log(ress)
+        document.getElementById("green").style.visibility = 'visible'; 
+      });
+      console.log('this is submti ')
+    });
+
+  </script>
+</body>
+
+</html>
+
+
